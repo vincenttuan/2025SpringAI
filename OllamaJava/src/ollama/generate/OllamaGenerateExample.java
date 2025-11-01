@@ -101,7 +101,7 @@ public class OllamaGenerateExample {
 					
 					String line = null;
 					while((line = reader.readLine()) != null) {
-						System.out.print(line); // 逐字顯示
+						System.out.println(line); // 逐字顯示
 					}
 				}
 				
