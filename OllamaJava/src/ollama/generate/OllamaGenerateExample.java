@@ -1,5 +1,7 @@
 package ollama.generate;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -52,9 +54,13 @@ public class OllamaGenerateExample {
 		System.out.printf("要發送的 JSON:%n%s%n", jsonBody);
 		
 		//---------------------------------------------------
-		// 2. 建立 OkHttpClient 實例
+		// 2. 建立 OkHttpClient 實例 (加入 Timeout)
 		//---------------------------------------------------
-		OkHttpClient client = new OkHttpClient();
+		OkHttpClient client = new OkHttpClient.Builder()
+				.connectTimeout(60, TimeUnit.SECONDS)
+				.readTimeout(60, TimeUnit.SECONDS)
+				.writeTimeout(60, TimeUnit.SECONDS)
+				.build();
 		
 		//---------------------------------------------------
 		// 3. 建立 RequestBody (將 JSON 字串包裝成請求主體)
