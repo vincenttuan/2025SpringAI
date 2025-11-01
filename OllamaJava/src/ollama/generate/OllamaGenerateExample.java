@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -100,8 +103,16 @@ public class OllamaGenerateExample {
 					BufferedReader reader = new BufferedReader(isr)) { // 可逐行讀取
 					
 					String line = null;
+					Gson gson = new Gson();
 					while((line = reader.readLine()) != null) {
-						System.out.println(line); // 逐字顯示
+						//System.out.println(line); // 逐行顯示
+						// {"model":"qwen3:4b","created_at":"2025-11-01T07:37:50.4647587Z","response":"您","done":false}
+						JsonObject obj = gson.fromJson(line, JsonObject.class);
+						if(obj.get("response") == null) {
+							continue;
+						}
+						String responseContent = obj.get("response").getAsString();
+						System.out.print(responseContent);
 					}
 				}
 				
