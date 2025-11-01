@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * 範例名稱：OllamaGenerateExample（使用 OkHttp3 版本）
@@ -71,10 +72,22 @@ public class OllamaGenerateExample {
 		//---------------------------------------------------
 		// 5. 同步發送請求並取得回應
 		//---------------------------------------------------
-		Response response = client.newCall(request).execute();
+		try(Response response = client.newCall(request).execute()){
+			
+			// 檢查回應是否成功 ?
+			if(!response.isSuccessful()) {
+				System.out.printf("請求失敗, HTTP 狀態碼: %n%s", response.code());
+				return;
+			}
+			
+			// 取得回應內容
+			String responseBody = response.body().string();
+			
+			System.out.printf("%n回應碼: %s%n", response.code());
+			System.out.printf("完整回應: %s%n", responseBody);
+			
+		}
 		
-		
-		response.close();
 	}
 
 }
