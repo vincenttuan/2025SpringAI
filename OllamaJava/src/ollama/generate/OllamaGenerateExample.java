@@ -39,10 +39,10 @@ public class OllamaGenerateExample {
 	// 定義媒體(MediaType)型別為 json
 	private static final MediaType JSON = MediaType.get("application/json;charset=utf-8");
 	
-	// 是否支援 stream
-	private static final Boolean IS_STREAM = true;
 	
 	public static void main(String[] args) throws Exception {
+		// 是否支援 stream
+		Boolean supportStream = true;
 		
 		//---------------------------------------------------
 		// 1. 建立 JSON 請求內容
@@ -54,7 +54,7 @@ public class OllamaGenerateExample {
 					"stream": %b
 				}
 				""";
-		jsonBody = String.format(jsonBody, IS_STREAM);
+		jsonBody = String.format(jsonBody, supportStream);
 		System.out.printf("要發送的 JSON:%n%s%n", jsonBody);
 		
 		//---------------------------------------------------
