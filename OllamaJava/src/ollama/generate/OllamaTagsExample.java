@@ -1,5 +1,7 @@
 package ollama.generate;
 
+import java.util.stream.StreamSupport;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -49,6 +51,12 @@ public class OllamaTagsExample {
 				System.out.println(models.get(i).getAsJsonObject().get("name").getAsString());
 			}
 			
+			// case 3
+			// false -> 順序流, true -> 並行流
+			StreamSupport.stream(models.spliterator(), false)
+						.map(JsonElement::getAsJsonObject)
+						.map(obj -> obj.get("name").getAsString())
+						.forEach(System.out::println);
 			
 			
 		}
