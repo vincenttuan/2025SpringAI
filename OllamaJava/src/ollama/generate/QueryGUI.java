@@ -127,6 +127,14 @@ public class QueryGUI extends JFrame {
 		// 將元件加入到 formPanel 中
 		formPanel.add(askField, gbc);
 		
+		// -- 創建 "罐頭內容" 元件 ------------------------
+		askDefaultCombo = new JComboBox<String>(ASK_DEFAULT);
+		// 元件放置位置
+		gbc.gridx = 2;
+		gbc.gridy = 2;
+		// 將元件加入到 formPanel 中
+		formPanel.add(askDefaultCombo, gbc);
+		
 		// -- 創建 "查詢" 元件 ------------------------
 		queryBtn = new JButton("查詢");
 		// 元件放置位置
