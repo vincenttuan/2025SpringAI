@@ -34,10 +34,15 @@ public class TwseData {
 		int modelIndex = scanner.nextInt();
 		String modelName = modelNames[modelIndex];
 		
+		/*
 		String financeData = """
 				有一檔股票財金資訊如下: 證券代號=2330 證券名稱=台積電 收盤價=1460.00 殖利率(%)=1.16 股利年度=113 本益比=25.94 股價淨值比=8.26 財報年/季=114/2
 				""";
-				
+		*/
+		System.out.print("請輸入股票代號(例如:2330) => ");
+		String symbol = scanner.next();
+		String financeData = TwseDataDownload.getStringDataWithPrompt(symbol);
+		
 		// 問題文字
 		System.out.print("請輸入問題(不要有空格) => ");
 		String question = scanner.next();
