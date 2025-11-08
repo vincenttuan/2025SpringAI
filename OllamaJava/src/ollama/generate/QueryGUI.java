@@ -143,6 +143,7 @@ public class QueryGUI extends JFrame {
 		add(footerLabel, BorderLayout.SOUTH);
 		
 		// 預設內容
+		modelCombo.setSelectedIndex(0); // 預設值 = 0
 		symbolField.setText("2330");
 		askField.setText("請建議此檔股票的買賣區間");		
 	}
