@@ -60,13 +60,37 @@ public class QueryGUI extends JFrame {
 		// 元件會在水平方向伸展
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		
-		// 創建第一個標籤元件
+		// -- 創建 "選擇模型:" 標籤元件 ------------------------
 		JLabel modelLabel = new JLabel("選擇模型:");
 		// 元件放置位置
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		// 將元件加入到 formPanel 中
 		formPanel.add(modelLabel, gbc);
+		
+		// -- 創建 "選擇模型:" 標籤元件 ------------------------
+		modelCombo = new JComboBox<>(MODEL_NAMES);
+		// 元件放置位置
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		// 將元件加入到 formPanel 中
+		formPanel.add(modelCombo, gbc);
+		
+		// -- 創建 "股票代號:" 標籤元件 ------------------------
+		JLabel symbolLabel = new JLabel("股票代號:");
+		// 元件放置位置
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		// 將元件加入到 formPanel 中
+		formPanel.add(symbolLabel, gbc);
+		
+		// -- 創建 "選擇模型:" 標籤元件 ------------------------
+		symbolField = new JTextField(10);
+		// 元件放置位置
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		// 將元件加入到 formPanel 中
+		formPanel.add(symbolField, gbc);
 		
 		// 將 formPanel 放在 QueryGUI 主畫面的上方
 		add(formPanel, BorderLayout.NORTH);
