@@ -151,10 +151,12 @@ public class QueryGUI extends JFrame {
 		askField.setText("請建議此檔股票的買賣區間");		
 	}
 	
+	// 初始監聽
 	private void initListeners() {
 		queryBtn.addActionListener(e -> onQueryClicked());
 	}
 	
+	// 當查詢鍵被按下時所要做的事
 	private void onQueryClicked() {
 		
 		resultArea.setText(""); // 清空上一筆查詢結果資料
