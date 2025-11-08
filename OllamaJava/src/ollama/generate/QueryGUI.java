@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import ollama.generate.QueryExecutor.QueryCallback;
+
 public class QueryGUI extends JFrame {
 	// 視覺元件
 	private JComboBox<String> modelCombo;
@@ -146,6 +148,48 @@ public class QueryGUI extends JFrame {
 		modelCombo.setSelectedIndex(0); // 預設值 = 0
 		symbolField.setText("2330");
 		askField.setText("請建議此檔股票的買賣區間");		
+	}
+	
+	private void onQueryClicked() {
+		
+		resultArea.setText(""); // 清空上一筆查詢結果資料
+		// AI 所需相關參數建立
+		String modelName = (String) modelCombo.getSelectedItem();
+		String symbol = symbolField.getText().trim();
+		String prompt = TwseDataDownload.getStringDataWithPrompt(symbol);
+		String fullPrompt = prompt + " " + askField.getText().trim();
+		QueryCallback callback = new QueryCallback() {
+			
+			@Override
+			public void onResponseChar(char ch) {
+				SwingUtilities.invokeLater(() -> {
+					resultArea.append(String.valueOf(ch));
+				});
+			}
+			
+			@Override
+			public void onHttpError(int code) {
+				SwingUtilities.invokeLater(() -> {
+					resultArea.setText("HTTP 請求失敗, HTTP 狀態碼: " + code);
+				});
+			}
+			
+			@Override
+			public void onError(String message) {
+				SwingUtilities.invokeLater(() -> {
+					resultArea.setText("執行錯誤: " + message);
+				});
+			}
+			
+			@Override
+			public void onComplete() {
+				SwingUtilities.invokeLater(() -> {
+					resultArea.append("\n查詢完成 !");
+				});
+			}
+		};
+		
+		
 	}
 	
 	public static void main(String[] args) {
