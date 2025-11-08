@@ -44,6 +44,13 @@ public class QueryExecutor {
 	
 	// 以非同步方式對指定模型發起查詢請求，並回傳串流資料。
 	public void execute(String modelName, String fullPrompt, QueryCallback callback) {
+		// 建立執行緒工作
+		Runnable runnable = () -> {
+			
+		};
+		
+		// 建立一條執行緒來處理
+		new Thread(runnable).start();
 		
 	}
 	
