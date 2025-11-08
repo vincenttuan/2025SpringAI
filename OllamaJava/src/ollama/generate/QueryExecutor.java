@@ -89,6 +89,16 @@ public class QueryExecutor {
 						String line = null;
 						while((line = reader.readLine()) != null) {
 							if(line.isBlank()) continue; // 此行掠過讀下一行
+							/**
+							 * line 的資料範例:
+							 	{
+									"model": "qwen3:4b",
+									"created_at": "2025-11-08T04:13:00.9136281Z",
+									"response": "",
+									"thinking": "嗯",
+									"done": false
+								}					 
+							 * */
 							
 							JsonObject obj = gson.fromJson(line, JsonObject.class);
 							if(obj.has("response") && !obj.get("response").isJsonNull()) {
