@@ -174,6 +174,8 @@ public class QueryGUI extends JFrame {
 		
 		// 關閉元件互動
 		disableInputs(true);
+		// 啟動 loading 動畫
+		startLoadingAnimation();
 		
 		String fullPrompt = prompt + " " + askField.getText().trim();
 		QueryCallback callback = new QueryCallback() {
@@ -191,6 +193,8 @@ public class QueryGUI extends JFrame {
 					resultArea.setText("HTTP 請求失敗, HTTP 狀態碼: " + code);
 					// 開啟元件互動
 					disableInputs(false);
+					// 關閉 loading 動畫
+					stopLoadingAnimation();
 				});
 			}
 			
@@ -200,6 +204,8 @@ public class QueryGUI extends JFrame {
 					resultArea.setText("執行錯誤: " + message);
 					// 開啟元件互動
 					disableInputs(false);
+					// 關閉 loading 動畫
+					stopLoadingAnimation();
 				});
 			}
 			
@@ -209,6 +215,8 @@ public class QueryGUI extends JFrame {
 					resultArea.append("\n查詢完成 !");
 					// 開啟元件互動
 					disableInputs(false);
+					// 關閉 loading 動畫
+					stopLoadingAnimation();
 				});
 			}
 		};
