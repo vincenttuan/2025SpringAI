@@ -204,6 +204,7 @@ public class QueryGUI extends JFrame {
 		
 	}
 	
+	// 資料驗證
 	private boolean validateInput() {
 		if(symbolField.getText().trim().isEmpty() || askField.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(this, "請填入股票代號與提問內容");
