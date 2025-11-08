@@ -43,7 +43,9 @@ public class TwseData {
 		String question = scanner.next();
 		
 		// question 前面要加上 financeData <= prompt(提示語, 給 AI 的說明書, 讓 AI 更具有充分資料解決問題)
-		String prompt = financeData + " 請問:" + question; 
+		String prompt = financeData + " 請問:" + question;
+		// 消除換行符號
+		prompt = prompt.replaceAll("\n", "");
 		
 		// 是否支援 stream
 		Boolean supportStream = true;
