@@ -141,7 +141,10 @@ public class QueryGUI extends JFrame {
 		
 		// 將 resultScroll 放在 QueryGUI 主畫面的下方c
 		add(footerLabel, BorderLayout.SOUTH);
-				
+		
+		// 預設內容
+		symbolField.setText("2330");
+		askField.setText("請建議此檔股票的買賣區間");		
 	}
 	
 	public static void main(String[] args) {
