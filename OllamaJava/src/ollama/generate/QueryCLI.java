@@ -52,6 +52,7 @@ public class QueryCLI {
 		// 執行查詢
 		queryExecutor.execute(modelName, fullPrompt, callback);
 		
+		scanner.close();
 	}
 
 }
