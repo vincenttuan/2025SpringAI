@@ -29,8 +29,8 @@ public class QueryExecutor {
 	public interface QueryCallback {
 		void onResponseChar(char ch); // 逐字回應
 		void onComplete(); // 查詢完成
-		void onError(); // 一般錯誤
-		void onHttpError(); // Http 狀態錯誤
+		void onError(String message); // 一般錯誤
+		void onHttpError(int code); // Http 狀態錯誤
 	}
 	
 	public QueryExecutor() {
@@ -46,6 +46,11 @@ public class QueryExecutor {
 	public void execute(String modelName, String fullPrompt, QueryCallback callback) {
 		// 建立執行緒工作
 		Runnable runnable = () -> {
+			try {
+				
+			} catch (Exception e) {
+				callback.onError(e.getMessage());
+			}
 			
 		};
 		
