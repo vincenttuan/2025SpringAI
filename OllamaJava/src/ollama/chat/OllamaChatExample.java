@@ -85,6 +85,8 @@ public class OllamaChatExample {
 					""";
 			jsonBody = String.format(jsonBody, modelName, new Gson().toJson(messages), supportStream);
 			System.out.printf("要發送的 JSON: %n%s%n", jsonBody);
+			
+			scanner.nextLine();
 		}	
 		
 		
