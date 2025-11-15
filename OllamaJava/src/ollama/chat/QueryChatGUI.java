@@ -198,15 +198,27 @@ public class QueryChatGUI extends JFrame {
     	
     	// 實作 callback 回應
     	QueryChatExecutor.QueryCallback callback = new QueryChatExecutor.QueryCallback() {
-
+    		// 累積 AI 的回應字串, 以便回存到歷史紀錄中
+    		StringBuilder assistantContent = new StringBuilder();
+    		
 			@Override
 			public void onResponseChar(char ch) {
-
+				String data = String.valueOf(ch);
+				resultArea.append(data); // 字元轉字串
+				assistantContent.append(data); // 收集累計所有的回應文字
 			}
 
 			@Override
 			public void onComplete() {
-			
+				// 回應完成後將 assistantContent 加入到歷史資料集合中
+				Map<String, String> assistantMessage = new HashMap<>();
+				assistantMessage.put("role", "assistant");
+				assistantMessage.put("content", assistantContent.toString());
+				messageHistory.add(assistantMessage);
+				
+				resultArea.append("\n\n=== 查詢完成 ===\n");
+				disableInputs(false);
+				stopLoadingAnimation();
 			}
 
 			@Override
