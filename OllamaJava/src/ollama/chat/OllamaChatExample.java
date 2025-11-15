@@ -133,9 +133,15 @@ public class OllamaChatExample {
 						
 						String line = null;
 						Gson gson = new Gson();
+						StringBuilder totalContent = new StringBuilder(); // 將所有逐字 content 集合起來
 						while((line = reader.readLine()) != null) {
 							JsonObject obj = gson.fromJson(line, JsonObject.class);
-							System.out.println(obj);
+							//System.out.println(obj);
+							if(obj.has("message") && obj.get("message").getAsJsonObject().has("content")) {
+								String content = obj.get("message").getAsJsonObject().get("content").getAsString();
+								totalContent.append(content);
+								System.out.print(content);
+							}
 						}
 					}
 					
@@ -145,6 +151,7 @@ public class OllamaChatExample {
 					System.out.printf("完整回應: %s%n", responseBody);
 				}
 				
+				System.out.println("\n回應完畢 !\n");
 			}
 			
 			
