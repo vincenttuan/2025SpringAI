@@ -188,7 +188,41 @@ public class QueryChatGUI extends JFrame {
     	userMessage.put("content", input);
     	messageHistory.add(userMessage);
     	
+    	// 清空顯示區, 同時禁用輸入元件避免重複觸發
+    	resultArea.setText("");
+    	disableInputs(true);
+    	startLoadingAnimation(); // 啟動 loading 動畫
     	
+    	// 模型名稱
+    	String modelName = modelCombo.getSelectedItem().toString();
+    	
+    	// 實作 callback 回應
+    	QueryChatExecutor.QueryCallback callback = new QueryChatExecutor.QueryCallback() {
+
+			@Override
+			public void onResponseChar(char ch) {
+
+			}
+
+			@Override
+			public void onComplete() {
+			
+			}
+
+			@Override
+			public void onError(String message) {
+				
+			}
+
+			@Override
+			public void onHttpError(int statusCode) {
+				
+			}
+    		
+    	};
+    	
+    	// 執行 Chat 請求
+    	queryExecutor.execute(modelName, messageHistory, callback);
         
     }
 
