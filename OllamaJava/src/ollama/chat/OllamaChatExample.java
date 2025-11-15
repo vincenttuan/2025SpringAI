@@ -157,7 +157,16 @@ public class OllamaChatExample {
 					System.out.printf("完整回應: %s%n", responseBody);
 					
 					// 新增模型的回應到對話歷史中
-					
+					Gson gson = new Gson();
+					JsonObject obj = gson.fromJson(responseBody, JsonObject.class);
+					if(obj.has("message") && obj.get("message").getAsJsonObject().has("content")) {
+						String content = obj.get("message").getAsJsonObject().get("content").getAsString();
+						
+						JsonObject assistantMessage = new JsonObject();
+						assistantMessage.addProperty("role", "assistant");
+						assistantMessage.addProperty("content", content);
+						messages.add(assistantMessage);
+					}
 				}
 				
 				System.out.println("\n回應完畢 !\n");
