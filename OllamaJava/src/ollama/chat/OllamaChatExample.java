@@ -143,6 +143,12 @@ public class OllamaChatExample {
 								System.out.print(content);
 							}
 						}
+						
+						// 新增模型的回應到對話歷史中
+						JsonObject assistantMessage = new JsonObject();
+						assistantMessage.addProperty("role", "assistant");
+						assistantMessage.addProperty("content", totalContent.toString());
+						messages.add(assistantMessage);
 					}
 					
 				} else { // "stream": false
