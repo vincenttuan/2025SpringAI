@@ -223,12 +223,16 @@ public class QueryChatGUI extends JFrame {
 
 			@Override
 			public void onError(String message) {
-				
+				resultArea.setText("執行錯誤: " + message);
+				disableInputs(false);
+				stopLoadingAnimation();
 			}
 
 			@Override
 			public void onHttpError(int statusCode) {
-				
+				resultArea.setText("HTTP 請求失敗, HTTP 狀態碼: " + statusCode);
+				disableInputs(false);
+				stopLoadingAnimation();
 			}
     		
     	};
