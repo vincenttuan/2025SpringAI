@@ -56,7 +56,7 @@ public class QueryChatGUI extends JFrame {
 
     // 用於保存整個多輪聊天歷史，格式為List<Map<String,String>>，
     // 每條訊息包含role(user或assistant)與content文字。
-    private final List<Map<String, String>> messageHistory = new ArrayList<>();
+    private final List<Map<String, String>> messageHistory = DataFetcher.loadChatHistory();
 
     /**
      * 建構子，執行 UI 初始化與事件監聽設定
