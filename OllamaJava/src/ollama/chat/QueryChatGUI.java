@@ -206,7 +206,7 @@ public class QueryChatGUI extends JFrame {
      */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new QueryChatGUI2().setVisible(true);
+            new QueryChatGUI().setVisible(true);
         });
     }
 }
