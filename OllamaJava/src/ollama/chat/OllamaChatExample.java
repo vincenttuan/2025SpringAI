@@ -46,7 +46,7 @@ public class OllamaChatExample {
 	private static final String CHAT_WEB_API = "http://localhost:11434/api/chat";
 	
 	// 定義媒體格式(MediaTyep)類型為 json
-	private static final MediaType JSON = MediaType.get("appliaction/json;charset=utf-8");
+	private static final MediaType JSON = MediaType.get("application/json;charset=utf-8");
 	
 	public static void main(String[] args) throws Exception {
 		Scanner scanner = new Scanner(System.in);
