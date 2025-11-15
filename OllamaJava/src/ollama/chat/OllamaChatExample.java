@@ -62,11 +62,11 @@ public class OllamaChatExample {
 		List<JsonObject> messages = new ArrayList<>();
 		
 		// 是否支援 stream
-		Boolean supportStream = true;
+		Boolean supportStream = false;
 		
 		// 與 AI 持續對話
 		while(true) {
-			System.out.print("請輸入問題 (輸入 q/quit 結束) => ");
+			System.out.print("請輸入問題 (輸入範例:我喜歡白色,請你記住 或 q/quit 結束) => ");
 			String question = scanner.next();
 			if(question.equals("q") || question.equals("quit")) {
 				System.out.println("離開對話");
@@ -155,6 +155,9 @@ public class OllamaChatExample {
 					String responseBody = response.body().string();
 					System.out.printf("%n回應碼: %s%n", response.code());
 					System.out.printf("完整回應: %s%n", responseBody);
+					
+					// 新增模型的回應到對話歷史中
+					
 				}
 				
 				System.out.println("\n回應完畢 !\n");
