@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataFetcher {
 	
@@ -46,5 +48,39 @@ public class DataFetcher {
 		}
 		
 	}
+	
+	// 從 chat_logs 資料表中讀取歷史對話
+	public static List<Map<String, String>> loadChatHistory() {
+		List<Map<String, String>> history = new ArrayList<>();
+		String sql = "select user_input, bot_response from chat_logs order by created_at asc";
+		
+		try(Connection conn = DatabaseUtil.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql)) {
+			
+			while (rs.next()) {
+				// user 訊息
+				Map<String, String> userMessage = new HashMap<>();
+				userMessage.put("role", "user");
+				userMessage.put("content", rs.getString("user_input"));
+				history.add(userMessage);
+				
+				// assistant 訊息
+				Map<String, String> assistantMessage = new HashMap<>();
+				assistantMessage.put("role", "assistant");
+				assistantMessage.put("content", rs.getString("bot_response"));
+				history.add(assistantMessage);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return history;
+	}
+	
+	
+	
 	
 }
