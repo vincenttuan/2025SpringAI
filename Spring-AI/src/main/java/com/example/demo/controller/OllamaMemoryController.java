@@ -21,6 +21,8 @@ public class OllamaMemoryController {
 	// 一次性回覆
 	// http://localhost:8080/ollama-memory/ask?q=我喜歡爬山運動請記住
 	// http://localhost:8080/ollama-memory/ask?q=請問我喜歡什麼運動
+	// http://localhost:8080/ollama-memory/ask?q=我喜歡黃色請記住
+	// http://localhost:8080/ollama-memory/ask?q=請問我喜歡什麼顏色
 	@GetMapping("/ask")
 	public String ask(@RequestParam String q, @RequestParam(defaultValue = "default") String conversationId) {
 		return ollamaMemoryService.askWithMemory(conversationId, q);
