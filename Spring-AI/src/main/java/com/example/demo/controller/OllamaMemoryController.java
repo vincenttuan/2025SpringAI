@@ -1,12 +1,15 @@
 package com.example.demo.controller;
 
 import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.OllamaMemoryService;
+
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/ollama-memory")
@@ -29,6 +32,12 @@ public class OllamaMemoryController {
 	@GetMapping("/ask")
 	public String ask(@RequestParam String q, @RequestParam(defaultValue = "default") String conversationId) {
 		return ollamaMemoryService.askWithMemory(conversationId, q);
+	}
+	
+	// 串流回覆
+	@GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<String> stream(@RequestParam String q, @RequestParam(defaultValue = "default") String conversationId) {
+		return ollamaMemoryService.streamWithMemory(conversationId, q);
 	}
 	
 	
