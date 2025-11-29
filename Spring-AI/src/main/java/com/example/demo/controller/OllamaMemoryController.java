@@ -35,6 +35,8 @@ public class OllamaMemoryController {
 	}
 	
 	// 串流回覆
+	//http://localhost:8080/ollama-memory/stream?q=我喜歡紅色請記住
+	//http://localhost:8080/ollama-memory/stream?q=請問我喜歡什麼顏色
 	@GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<String> stream(@RequestParam String q, @RequestParam(defaultValue = "default") String conversationId) {
 		return ollamaMemoryService.streamWithMemory(conversationId, q);
