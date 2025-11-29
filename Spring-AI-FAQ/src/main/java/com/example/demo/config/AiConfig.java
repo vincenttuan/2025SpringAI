@@ -14,7 +14,7 @@ import org.springframework.ai.ollama.api.OllamaChatOptions;
 public class AiConfig {
 
     private static final String OLLAMA_URL = "http://localhost:11434";
-    private static final String MODEL = "qwen3:4b";
+    private static final String MODEL = "llama3.1:8b";
 
     @Bean
     public OllamaApi ollamaApi() {
