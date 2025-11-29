@@ -15,7 +15,7 @@ public class AiConfig {
 	private String defaultModel = "llama3.1:8b";
 	
 	@Bean
-	public OllamaApi ollamaApi() {
+	OllamaApi ollamaApi() {
 		return OllamaApi.builder()
 				.baseUrl(ollamaApiURL)
 				.build();
@@ -23,7 +23,7 @@ public class AiConfig {
 	
 	
 	@Bean
-	public OllamaChatModel chatModel(OllamaApi ollamaApi) {
+	OllamaChatModel chatModel(OllamaApi ollamaApi) {
 		return OllamaChatModel.builder()
 				.ollamaApi(ollamaApi)
 				.defaultOptions(
@@ -34,8 +34,9 @@ public class AiConfig {
 				.build();
 	}
 	
+	
 	@Bean
-	public ChatMemory chatMemory() {
+	ChatMemory chatMemory() {
 		return MessageWindowChatMemory.builder()
 				.maxMessages(100) // 保留最近 100 筆
 				.build();
