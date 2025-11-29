@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>小美 FAQ 助理</title>
+    <!-- 引入外部 CSS -->
+    <link rel="stylesheet" href="/css/faq.css">
+</head>
+<body>
+
+<h2>小美 FAQ 助理</h2>
+
+<div>可輸入 conversationId 來分隔不同對話：</div>
+<input id="cid" placeholder="例如：A 或 B">
+
+<div id="chat-box"></div>
+
+<div class="input-row">
+    <input id="question" placeholder="請輸入問題，例如：小美喜歡什麼顏色？" style="width: 400px;">
+    <button onclick="ask()">送出</button>
+</div>
+
+<!-- 引入外部 JS -->
+<script src="/js/faq.js"></script>
+
+</body>
+</html>

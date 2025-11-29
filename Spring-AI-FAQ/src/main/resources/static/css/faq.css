@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, "微軟正黑體", sans-serif;
+    padding: 20px;
+}
+
+#chat-box {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-row {
+	margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+input[type="text"] {
+	padding: 6px;
+    font-size: 14px;
+}
+
+#cid {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 4px;
+    width: 200px;
+}
