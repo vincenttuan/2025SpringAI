@@ -1,5 +1,10 @@
 package com.example.demo.ragdemo;
 
-public class VectorStoreConfig {
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
+public class VectorStoreConfig {
+	
+	
+	
 }
