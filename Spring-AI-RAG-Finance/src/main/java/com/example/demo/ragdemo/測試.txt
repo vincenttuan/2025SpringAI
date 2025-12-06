@@ -3,3 +3,6 @@ curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "台
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "如果股價跌破所有均線，通常代表市場可能出現什麼情況？為什麼？"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "為什麼專業操盤手會特別注意突破時的量能？請說明「價漲量增」與「價跌量縮」各自的意義。"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "如果 0050 在盤中突破前高，但成交量沒有同步放大，你認為這個突破是否可靠？請結合 ETF 的特性,成交量的意義,進行完整分析。"
+
+目前 RAG 知識庫無法回答的問題
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "成交量縮小但 RSI 上升代表甚麼現象 ?"
