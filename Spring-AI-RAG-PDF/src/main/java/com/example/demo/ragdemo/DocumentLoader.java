@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class DocumentLoader implements CommandLineRunner {
 	
-	static int documentSize;
 	private final VectorStore vectorStore;
 	
 	public DocumentLoader(VectorStore vectorStore) {
@@ -42,7 +41,6 @@ public class DocumentLoader implements CommandLineRunner {
 		// 將書庫的書加入到向量資料庫
 		vectorStore.add(pdfDocs);
 		System.out.println("PDF 文檔已成功載入向量資料庫, 給 RAG 讀的 Document 數量:" + pdfDocs.size());
-		documentSize = pdfDocs.size();
 		
 	}
 	

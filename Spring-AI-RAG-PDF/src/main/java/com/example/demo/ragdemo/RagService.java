@@ -26,9 +26,15 @@ public class RagService {
 	public String askQuestion(String question) {
 		// 建立 SearchRequest
 		// 檢索最相關的 N 份文檔
+		/*
+			你的模型（llama3:8b）通常 token 限制在：
+			聊天：4K～8K tokens
+			文本超多時會塞不進去
+			如果你塞整本 PDF → 必爆。
+		*/
 		SearchRequest request = SearchRequest.builder()
 				.query(question)
-				.topK(DocumentLoader.documentSize)
+				.topK(7)
 				.build();
 		
 		// 相似度搜尋
