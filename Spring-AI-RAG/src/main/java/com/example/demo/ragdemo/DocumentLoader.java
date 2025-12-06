@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DocumentLoader implements CommandLineRunner {
 	
 	private final VectorStore vectorStore;
