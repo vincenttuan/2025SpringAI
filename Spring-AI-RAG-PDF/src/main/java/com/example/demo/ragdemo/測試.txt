@@ -2,3 +2,4 @@ curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "台
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請介紹台灣"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請介紹台灣與聯合國的關係"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請問何謂春天"
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "我最喜歡的食物是?"
