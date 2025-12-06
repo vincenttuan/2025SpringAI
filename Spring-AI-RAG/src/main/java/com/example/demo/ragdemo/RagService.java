@@ -45,6 +45,8 @@ public class RagService {
 				{context}
 				
 				問題:{question}
+				
+				請排除任何有"但是"的回覆
 				答案:
 				""");
 		
