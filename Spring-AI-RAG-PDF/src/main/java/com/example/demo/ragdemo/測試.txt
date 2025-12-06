@@ -5,3 +5,4 @@ curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "我最喜歡的食物是?"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請問何謂三心二意?"
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請問常存感恩的心是一種什麼?"
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請問現今資訊安全所面臨的困境?"
