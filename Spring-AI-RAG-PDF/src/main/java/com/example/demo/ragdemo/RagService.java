@@ -25,10 +25,10 @@ public class RagService {
 	
 	public String askQuestion(String question) {
 		// 建立 SearchRequest
-		// 檢索最相關的 2 份文檔 topK(2)
+		// 檢索最相關的 N 份文檔
 		SearchRequest request = SearchRequest.builder()
 				.query(question)
-				.topK(2)
+				.topK(DocumentLoader.documentSize)
 				.build();
 		
 		// 相似度搜尋
