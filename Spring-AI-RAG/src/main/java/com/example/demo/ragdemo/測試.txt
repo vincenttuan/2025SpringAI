@@ -1,1 +1,2 @@
 curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "台灣首都在哪裡?"
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d "請介紹台灣"
