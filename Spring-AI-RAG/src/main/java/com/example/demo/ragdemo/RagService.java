@@ -46,12 +46,14 @@ public class RagService {
 				
 				問題:{question}
 				
-				請排除任何有"但是"的回覆
+				回答時請排除任何有"但是"的回覆
+				回答時請刪除有"根據上下文"字眼的內容
+				全部回答後請統一印出加上資料來源是{source}的字樣
 				答案:
 				""");
 		
 		Prompt prompt = promptTemplate.create(
-				Map.of("context", context, "question", question)
+				Map.of("context", context, "question", question, "source", "某某 AI 研究中心")
 		);
 		
 		// 回應 ChatClient
