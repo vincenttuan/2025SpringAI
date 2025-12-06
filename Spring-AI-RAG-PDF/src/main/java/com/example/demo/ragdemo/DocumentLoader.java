@@ -30,14 +30,14 @@ public class DocumentLoader implements CommandLineRunner {
 					new PagePdfDocumentReader(new ClassPathResource("docs/spring.pdf")).read(), // List<Document>
 					new PagePdfDocumentReader(new ClassPathResource("docs/taiwan.pdf")).read(), // List<Document>
 					new PagePdfDocumentReader(new ClassPathResource("docs/teacher.pdf")).read(), // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/常存感恩的心.pdf")).read() // List<Document>
+					new PagePdfDocumentReader(new ClassPathResource("docs/thanksgiving.pdf")).read() // List<Document>
 					).flatMap(List::stream) // List<List<Document>> 變成 List<Document> -> List<Document> -> List<Document>...
 				.collect(Collectors.toList());
 		
 		// 書庫
 		// 將書庫的書加入到向量資料庫
 		vectorStore.add(pdfDocs);
-		System.out.println("PDF 文檔已成功載入向量資料庫, 文檔數量:" + pdfDocs.size());
+		System.out.println("PDF 文檔已成功載入向量資料庫, 給 RAG 讀的 Document 數量:" + pdfDocs.size());
 		
 	}
 	
