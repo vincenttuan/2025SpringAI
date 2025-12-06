@@ -36,7 +36,7 @@ public class DocumentLoader implements CommandLineRunner {
 		// 書庫
 		// 將書庫的書加入到向量資料庫
 		vectorStore.add(pdfDocs);
-		System.out.println("文檔已成功載入向量資料庫, 文檔數量:" + pdfDocs.size());
+		System.out.println("PDF 文檔已成功載入向量資料庫, 文檔數量:" + pdfDocs.size());
 		
 	}
 	
