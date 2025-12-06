@@ -1,0 +1,5 @@
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d ""
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d ""
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d ""
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d ""
+curl -X POST http://localhost:8080/rag/ask -H "Content-Type: text/plain" -d ""
