@@ -53,7 +53,7 @@ public class RagService {
 				""");
 		
 		Prompt prompt = promptTemplate.create(
-				Map.of("context", context, "question", question, "source", "中國大陸")
+				Map.of("context", context, "question", question, "source", "巨匠電腦")
 		);
 		
 		// 回應 ChatClient
