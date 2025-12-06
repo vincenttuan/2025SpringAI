@@ -33,7 +33,7 @@ public class DocumentLoader implements CommandLineRunner {
 					new PagePdfDocumentReader(new ClassPathResource("docs/spring.pdf")).read(), // List<Document>
 					new PagePdfDocumentReader(new ClassPathResource("docs/taiwan.pdf")).read(), // List<Document>
 					new PagePdfDocumentReader(new ClassPathResource("docs/teacher.pdf")).read(), // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/常存感恩的心.pdf")).read() // List<Document>
+					new PagePdfDocumentReader(new ClassPathResource("docs/thanksgiving.pdf")).read() // List<Document>
 					//new PagePdfDocumentReader(new ClassPathResource("docs/03_2025 JavaDay_劉得民老師.pdf")).read() // List<Document>
 					).flatMap(List::stream) // List<List<Document>> 變成 List<Document> -> List<Document> -> List<Document>...
 				.collect(Collectors.toList());
