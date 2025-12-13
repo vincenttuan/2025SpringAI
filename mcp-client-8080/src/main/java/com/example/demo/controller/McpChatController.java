@@ -68,9 +68,9 @@ public class McpChatController {
 	}
 	
 	
-	// 使用者依序透過 http://localhost:8080/mcp/buy?q=2橘子,1牛奶
-	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3橘子
-	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3麵包
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=2個橘子,1瓶牛奶
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3個橘子
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3個麵包
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=查看購物車內容
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=結帳
 	/**
@@ -79,6 +79,7 @@ public class McpChatController {
 	 * */
 	@GetMapping(value = "/buy", produces = "text/plain;charset=UTF-8")
 	public String buy(@RequestParam("q") String userPrompt) {
+		
 		 String systemPrompt = """
             你是一個專業的「逐步購物 AI 代理人」，支援使用者多次獨立調用完成購物流程。
             
@@ -103,7 +104,8 @@ public class McpChatController {
             4. **最終只輸出最後工具結果**，不加解釋
             
             ## 鐵律：**最終輸出規定（違規即失敗）**
-            最終回答 = 最後一個工具呼叫的 100% 原始回傳字串
+            剩餘庫存不要自己亂寫
+            最終回答 = (工具的回傳字串原文，請只輸出自然語言，不要出現任何程式相關的東西)
             """;
 		 
 		 return chatClient

@@ -85,5 +85,7 @@ public class ShoppingService {
 		return String.format("結帳成功! 總金額:%d%n", total);
 	}
 	
+	/** 查詢目前所有收品的庫存 */
+	
 	
 }
