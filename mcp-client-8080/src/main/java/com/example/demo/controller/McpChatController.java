@@ -61,7 +61,7 @@ public class McpChatController {
 	/**
 	 * GET 買賣行為
 	 * 路徑: /stockOrder?q=b,2454,10
-	 * 路徑: /stockOrder?q=s,2550,5
+	 * 路徑: /stockOrder?q=s,2330,3
 	 * */
 	@GetMapping(value = "/stockOrder", produces = "text/plain;charset=UTF-8")
 	public String stockOrderAction(@RequestParam("q") String userPrompt) {
@@ -84,7 +84,7 @@ public class McpChatController {
 				2. 必須完整列出所有持股明細
 
 				【輸出規則（非常重要）】
-				最終回答 = 一定要是工具的回傳字串原文。
+				最終回答 = 一定要是工具的回傳字串原文, 是純文字不是 json 資料。
 				""";
 		defaultPrompt = String.format(defaultPrompt, bs, symbol, shares, bs, bs, bs);
 
