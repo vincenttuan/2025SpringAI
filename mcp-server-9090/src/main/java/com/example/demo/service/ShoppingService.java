@@ -85,7 +85,16 @@ public class ShoppingService {
 		return String.format("結帳成功! 總金額:%d%n", total);
 	}
 	
-	/** 查詢目前所有收品的庫存 */
-	
-	
+	/** 查詢目前所有商品的庫存 */
+	@Tool(name = "checkInventory", description = "查詢目前所有商品的庫存")
+	public String checkInventory() {
+		System.out.println("呼叫 checkInventory()");
+		StringBuilder sb = new StringBuilder("目前庫存狀態:\n");
+		productCatalog.forEach((name, product) -> {
+			sb.append(String.format("商品名稱:%s 庫存:%d%n", name, product.getStock()));
+		});
+		
+		return sb.toString();
+	}
+ 	
 }
