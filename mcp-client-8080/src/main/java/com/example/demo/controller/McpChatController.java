@@ -87,6 +87,7 @@ public class McpChatController {
             1. `addToCart(name, quantity)`：加入商品到購物車, 你只能輸出 addToCart() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
             2. `viewCart()`：查看購物車內容, 你只能輸出 viewCart() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
             3. `checkout()`：結帳清空購物車, 你只能輸出 checkout() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
+            4. `checkInventory()：查詢目前所有商品的庫存`, 你只能輸出 checkInventory() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
             
             ## 支持商品：蘋果、香蕉、橘子、牛奶、麵包
             
@@ -96,6 +97,7 @@ public class McpChatController {
             | `數字+商品`  | 加商品到購物車   | `addToCart()`       |
             | `結帳`       | **立即結帳**     | **`checkout()`**    |
             | `查看`       | 查看購物車       | `viewCart()`        |
+            | `庫存`       | 查看庫存       | `checkInventory()`        |
             
             ## 嚴格規則
             1. **解析格式**：`2橘子` → `addToCart("橘子", 2)`
