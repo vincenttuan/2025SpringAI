@@ -13,11 +13,11 @@ public class ShoppingService {
 	/** 商品資訊:商品名稱 -> 商品物件 */
 	private static Map<String, Product> productCatalog = new LinkedHashMap<>();
 	static {
-		productCatalog.put("蘋果", new Product("蘋果", 30));
-		productCatalog.put("香蕉", new Product("香蕉", 20));
-		productCatalog.put("橘子", new Product("橘子", 25));
-		productCatalog.put("牛奶", new Product("牛奶", 60));
-		productCatalog.put("麵包", new Product("麵包", 45));
+		productCatalog.put("蘋果", new Product("蘋果", 30, 5));
+		productCatalog.put("香蕉", new Product("香蕉", 20, 5));
+		productCatalog.put("橘子", new Product("橘子", 25, 5));
+		productCatalog.put("牛奶", new Product("牛奶", 60, 5));
+		productCatalog.put("麵包", new Product("麵包", 45, 5));
 	}
 	
 	/** 購物車:商品名稱 -> 數量 */
@@ -28,13 +28,26 @@ public class ShoppingService {
 	public String addToCart(
 			@ToolParam(description = "商品名稱") String name, 
 			@ToolParam(description = "買進數量") Integer quantity) {
+		// 檢查商品是否存在 ?
 		if(!productCatalog.containsKey(name)) {
 			return "無此商品: " + name;
 		}
+		
+		// 檢查庫存
+		Product product = productCatalog.get(name);
+		if(product.getStock() < quantity) {
+			return String.format("庫存不足 ! %s 僅剩 %d 個, 無法購買 %d 個%n", 
+					name, product.getStock(), quantity);
+		}
+		
+		// 扣抵庫存
+		product.deductStock(quantity);
+		
+		// 加入購物車
 		cart.put(name, cart.getOrDefault(name, 0) + quantity);
 		System.out.printf("呼叫 addToCart(%s, %d)%n", name, quantity);
-		System.out.printf("%s 已加入購物車, 數量: %d%n", name, cart.get(name));
-		return String.format("%s 已加入購物車, 數量: %d%n", name, cart.get(name)); 
+		System.out.printf("%s 已加入購物車, 數量: %d (剩餘庫存: %d)%n", name, cart.get(name), product.getStock());
+		return String.format("%s 已加入購物車, 數量: %d (剩餘庫存: %d)%n", name, cart.get(name), product.getStock()); 
 	}
 	
 	/** 查看購物車內容 */
@@ -47,7 +60,8 @@ public class ShoppingService {
 		StringBuilder sb = new StringBuilder("購物車內容:\n");
 		cart.forEach((name, qty) -> {
 			Product product = productCatalog.get(name);
-			String msg = String.format("商品名稱:%s 單價:%d 數量:%d%n", name, product.getPrice(), qty);
+			String msg = String.format("商品名稱:%s 單價:%d 數量:%d (剩餘庫存: %d)%n", 
+					name, product.getPrice(), product.getStock(), qty);
 			sb.append(msg);
 		});
 		return sb.toString();
