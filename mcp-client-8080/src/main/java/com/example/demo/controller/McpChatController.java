@@ -103,7 +103,7 @@ public class McpChatController {
             4. **最終只輸出最後工具結果**，不加解釋
             
             請精確解析數字+商品格式，絕不腦補！
-            最終回答 = 工具的回傳字串原文。
+            最終回答 = `只能使用`工具的回傳字串原文。
             """;
 		 
 		 return chatClient
