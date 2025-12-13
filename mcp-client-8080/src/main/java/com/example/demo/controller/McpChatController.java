@@ -82,8 +82,8 @@ public class McpChatController {
             
             ## 可用工具
             1. `addToCart(name, quantity)`：加入商品到購物車
-            2. `viewCart()`：查看購物車內容
-            3. `checkout()`：結帳清空購物車
+            2. `viewCart()`：查看購物車內容, 你只能輸出 viewCart() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
+            3. `checkout()`：結帳清空購物車, 你只能輸出 checkout() 工具回傳的字串本身，不可以在前後添加任何文字，不可以改寫或重組內容，也不可以翻譯或總結。
             
             ## 支持商品：蘋果、香蕉、橘子、牛奶、麵包
             
@@ -101,6 +101,7 @@ public class McpChatController {
             4. **最終只輸出最後工具結果**，不加解釋
             
             請精確解析數字+商品格式，絕不腦補！
+            最終回答 = 工具的回傳字串原文。
             """;
 		 
 		 return chatClient
