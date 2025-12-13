@@ -59,6 +59,7 @@ public class ShoppingService {
 		System.out.println("呼叫 checkout()");
 		if(cart.isEmpty()) {
 			System.out.println("購物車是空的無法結帳");
+			return "購物車是空的無法結帳";
 		}
 		int total = cart.entrySet().stream()
 				.mapToInt(entry -> {
