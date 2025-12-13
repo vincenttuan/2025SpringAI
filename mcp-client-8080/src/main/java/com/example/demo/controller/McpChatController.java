@@ -75,5 +75,42 @@ public class McpChatController {
 	 * 逐步調用購物順序: 每次獨立處理, AI 智慧判斷
 	 * 使用者順序: 2橘子,1牛奶 -> 3麵包 -> 結帳
 	 * */
+	@GetMapping("/buy")
+	public String buy(@RequestParam("q") String userPrompt) {
+		 String systemPrompt = """
+            你是一個專業的「逐步購物 AI 代理人」，支援使用者多次獨立調用完成購物流程。
+            
+            ## 可用工具
+            1. `addToCart(name, quantity)`：加入商品到購物車
+            2. `viewCart()`：查看購物車內容
+            3. `checkout()`：結帳清空購物車
+            
+            ## 支持商品：蘋果、香蕉、橘子、牛奶、麵包
+            
+            ## 逐步指令判斷表
+            | 指令格式     | 動作             | 工具呼叫              |
+            |--------------|------------------|----------------------|
+            | `數字+商品`  | 加商品到購物車   | `addToCart()`       |
+            | `結帳`       | **立即結帳**     | **`checkout()`**    |
+            | `查看`       | 查看購物車       | `viewCart()`        |
+            
+            ## 嚴格規則
+            1. **解析格式**：`2橘子` → `addToCart("橘子", 2)`
+            2. **多商品**：`2橘子,1牛奶` → 兩次 `addToCart`
+            3. **看到「結帳」立即執行** `checkout()`，不查看購物車
+            4. **最終只輸出最後工具結果**，不加解釋
+            
+            請精確解析數字+商品格式，絕不腦補！
+            """;
+		 
+		 return chatClient
+				 .prompt()
+				 .system(systemPrompt)
+				 .user("處理指令:`" + userPrompt + "`")
+				 .call()
+				 .content();
+		 
+	}
+	
 	
 }
