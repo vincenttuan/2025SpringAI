@@ -68,4 +68,12 @@ public class McpChatController {
 	}
 	
 	
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=2橘子,1牛奶
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3麵包
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=結帳
+	/**
+	 * 逐步調用購物順序: 每次獨立處理, AI 智慧判斷
+	 * 使用者順序: 2橘子,1牛奶 -> 3麵包 -> 結帳
+	 * */
+	
 }
