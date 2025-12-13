@@ -21,7 +21,7 @@ public class McpChatController {
 				.build();
 	}
 	
-	@GetMapping("/default")
+	@GetMapping(value = "/default", produces = "text/plain;charset=UTF-8")
 	public String defaultAction() {
 		String defaultPrompt1 = "2橘子,1牛奶";
 		String defaultPrompt2 = "請將2個橘子與1瓶牛奶放到購物車中, 最後顯示購物車的內容";
@@ -76,7 +76,7 @@ public class McpChatController {
 	 * 逐步調用購物順序: 每次獨立處理, AI 智慧判斷
 	 * 使用者順序: 2橘子,1牛奶 -> 3麵包 -> 結帳
 	 * */
-	@GetMapping("/buy")
+	@GetMapping(value = "/buy", produces = "text/plain;charset=UTF-8")
 	public String buy(@RequestParam("q") String userPrompt) {
 		 String systemPrompt = """
             你是一個專業的「逐步購物 AI 代理人」，支援使用者多次獨立調用完成購物流程。
