@@ -69,6 +69,7 @@ public class McpChatController {
 	
 	
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=2橘子,1牛奶
+	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3橘子
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=3麵包
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=查看購物車內容
 	// 使用者依序透過 http://localhost:8080/mcp/buy?q=結帳
