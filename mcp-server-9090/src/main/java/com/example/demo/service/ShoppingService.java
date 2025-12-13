@@ -54,7 +54,7 @@ public class ShoppingService {
 	}
 	
 	/** 結帳並清空購物車 */
-	@Tool(name = "chekout", description = "購物車結帳")
+	@Tool(name = "checkout", description = "購物車結帳")
 	public String checkout() {
 		System.out.println("呼叫 checkout()");
 		if(cart.isEmpty()) {
