@@ -28,7 +28,29 @@ public class McpChatController {
 	 * */
 	@GetMapping(value = "/defaultStock", produces = "text/plain;charset=UTF-8")
 	public String defaultStockAction() {
-		String defaultPrompt = "幫我先買入 2454 聯發科 6 股並顯示買入總成本，再查詢目前持股。重要!持股明細一定要印出。";
+		//String defaultPrompt = "幫我先買入 2454 聯發科 6 股並顯示買入總成本，再查詢目前持股。重要!持股明細一定要印出。";
+		//String defaultPrompt = "幫我先賣出 2454 聯發科 6 股並顯示賣出總金額，再查詢目前持股。重要!持股明細一定要印出。";
+		
+		String bs = "賣出";
+		String defaultPrompt = """
+				你是一個股票交易助理 AI，必須嚴格依照以下步驟執行，不得自行省略任何步驟或輸出。
+
+				【步驟一：%s股票】
+				1. 股票代號：2454
+				2. 股票名稱：聯發科
+				3. 賣出股數：6 股
+				4. 請執行「%s股票」動作
+				5. 計算並顯示「本次%s的總成本」
+
+				【步驟二：查詢目前持股】
+				1. 在完成%s後，立刻查詢目前的股票持股狀態
+				2. 必須完整列出所有持股明細
+
+				【輸出規則（非常重要）】
+				最終回答 = 一定要是工具的回傳字串原文。
+				""";
+		defaultPrompt = String.format(defaultPrompt, bs, bs, bs, bs);
+
 		return chatClient
 				.prompt()
 				.user(defaultPrompt)
@@ -36,6 +58,42 @@ public class McpChatController {
 				.content();
 	}
 	
+	/**
+	 * GET 買賣行為
+	 * 路徑: /stockOrder?q=b,2454,10
+	 * 路徑: /stockOrder?q=s,2550,5
+	 * */
+	@GetMapping(value = "/stockOrder", produces = "text/plain;charset=UTF-8")
+	public String stockOrderAction(@RequestParam("q") String userPrompt) {
+		String[] array = userPrompt.split(","); 
+		String bs = array[0].equals("b")?"買進":"賣出";
+		String symbol = array[1];
+		String shares = array[2];
+		
+		String defaultPrompt = """
+				你是一個股票交易助理 AI，必須嚴格依照以下步驟執行，不得自行省略任何步驟或輸出。
+
+				【步驟一：%s股票】
+				1. 股票代號：%s
+				2. 賣出股數：%s 股
+				3. 請執行「%s股票」動作
+				4. 計算並顯示「本次%s的總成本」
+
+				【步驟二：查詢目前持股】
+				1. 在完成%s後，立刻查詢目前的股票持股狀態
+				2. 必須完整列出所有持股明細
+
+				【輸出規則（非常重要）】
+				最終回答 = 一定要是工具的回傳字串原文。
+				""";
+		defaultPrompt = String.format(defaultPrompt, bs, symbol, shares, bs, bs, bs);
+
+		return chatClient
+				.prompt()
+				.user(defaultPrompt)
+				.call()
+				.content();
+	}
 	
 	
 	@GetMapping(value = "/default", produces = "text/plain;charset=UTF-8")
