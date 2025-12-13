@@ -61,7 +61,7 @@ public class ShoppingService {
 		cart.forEach((name, qty) -> {
 			Product product = productCatalog.get(name);
 			String msg = String.format("商品名稱:%s 單價:%d 數量:%d (剩餘庫存: %d)%n", 
-					name, product.getPrice(), product.getStock(), qty);
+					name, product.getPrice(), qty, product.getStock());
 			sb.append(msg);
 		});
 		return sb.toString();
