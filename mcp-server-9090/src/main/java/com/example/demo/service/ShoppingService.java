@@ -27,7 +27,7 @@ public class ShoppingService {
 	@Tool(name = "addToCart", description = "將指定商品加入購物車")
 	public String addToCart(
 			@ToolParam(description = "商品名稱") String name, 
-			@ToolParam(description = "買進數量") int quantity) {
+			@ToolParam(description = "買進數量") Integer quantity) {
 		if(!productCatalog.containsKey(name)) {
 			return "無此商品: " + name;
 		}
