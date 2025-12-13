@@ -27,14 +27,15 @@ public class DocumentLoader implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// 書本(PDF) 放在 src/main/respurces/docs
 		List<Document> pdfDocs = Stream.of(
-					new PagePdfDocumentReader(new ClassPathResource("docs/eat.pdf")).read(),    // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/java.pdf")).read(),   // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/spring.pdf")).read(), // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/taiwan.pdf")).read(), // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/teacher.pdf")).read(), // List<Document>
-					new PagePdfDocumentReader(new ClassPathResource("docs/thanksgiving.pdf")).read() // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/eat.pdf")).read(),    // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/java.pdf")).read(),   // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/spring.pdf")).read(), // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/taiwan.pdf")).read(), // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/teacher.pdf")).read(), // List<Document>
+					//new PagePdfDocumentReader(new ClassPathResource("docs/thanksgiving.pdf")).read() // List<Document>
 					//new PagePdfDocumentReader(new ClassPathResource("docs/03_2025 JavaDay_劉得民老師.pdf")).read() // List<Document>
-					).flatMap(List::stream) // List<List<Document>> 變成 List<Document> -> List<Document> -> List<Document>...
+					new PagePdfDocumentReader(new ClassPathResource("docs/阿哲的第一次 0050 波段交易.pdf")).read() // List<Document>
+				).flatMap(List::stream) // List<List<Document>> 變成 List<Document> -> List<Document> -> List<Document>...
 				.collect(Collectors.toList());
 		
 		// 書庫
