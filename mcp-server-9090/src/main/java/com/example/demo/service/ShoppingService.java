@@ -47,7 +47,7 @@ public class ShoppingService {
 		StringBuilder sb = new StringBuilder("購物車內容:\n");
 		cart.forEach((name, qty) -> {
 			Product product = productCatalog.get(name);
-			String msg = String.format("商品名稱:%s 單價:%d 數量:%d%n", name, product.getName(), qty);
+			String msg = String.format("商品名稱:%s 單價:%d 數量:%d%n", name, product.getPrice(), qty);
 			sb.append(msg);
 		});
 		return sb.toString();
