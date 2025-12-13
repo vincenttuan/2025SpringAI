@@ -53,4 +53,22 @@ public class ShoppingService {
 		return sb.toString();
 	}
 	
+	/** 結帳並清空購物車 */
+	@Tool(name = "chekout", description = "購物車結帳")
+	public String checkout() {
+		System.out.println("呼叫 checkout()");
+		if(cart.isEmpty()) {
+			System.out.println("購物車是空的無法結帳");
+		}
+		int total = cart.entrySet().stream()
+				.mapToInt(entry -> {
+					Product product = productCatalog.get(entry.getKey());
+					return product.getPrice() * entry.getValue();
+				})
+				.sum();
+		cart.clear();
+		return String.format("結帳成功! 總金額:%d%n", total);
+	}
+	
+	
 }
