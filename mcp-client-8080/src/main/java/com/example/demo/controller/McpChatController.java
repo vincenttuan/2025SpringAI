@@ -24,9 +24,17 @@ public class McpChatController {
 	/**
 	 * GET 預設股票買賣行為
 	 * 路徑: /defaultStock
-	 * defaultPrompt = "幫我先買入 2454 聯發科 6 股並顯示買入成本，再查詢目前持股。重要!持股明細一定要印出。"
+	 * defaultPrompt = "幫我先買入 2454 聯發科 6 股並顯示買入總成本，再查詢目前持股。重要!持股明細一定要印出。"
 	 * */
-	
+	@GetMapping(value = "/defaultStock", produces = "text/plain;charset=UTF-8")
+	public String defaultStockAction() {
+		String defaultPrompt = "幫我先買入 2454 聯發科 6 股並顯示買入總成本，再查詢目前持股。重要!持股明細一定要印出。";
+		return chatClient
+				.prompt()
+				.user(defaultPrompt)
+				.call()
+				.content();
+	}
 	
 	
 	
